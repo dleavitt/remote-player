@@ -10,28 +10,27 @@ app.configure ->
 
   app.set 'port', port
   app.set 'views', "#{__dirname}/views"
-  # app.set 'view engine', 'jade'
+  app.set 'view engine', 'jade'
   app.use express.static("#{__dirname}/../public")
-  # app.use express.favicon()
-  # app.use express.logger('dev')
-  # app.use express.bodyParser()
-  # app.use express.methodOverride()
-  # app.use require('connect-assets')
-  #   src: "#{__dirname}/assets"
-  #   helperContext: app.locals
-  # app.use app.router
+  app.use express.favicon()
+  app.use express.logger('dev')
+  app.use express.bodyParser()
+  app.use express.methodOverride()
+  app.use require('connect-assets')
+    src: "#{__dirname}/assets"
+    helperContext: app.locals
 
 app.configure 'development', ->
   app.use express.errorHandler()
 
-# console.log __dirname + '/index.html'
-app.get '/', (req, res) ->
-  res.render 'index', view: 'index'
+app.get '/player', (req, res) -> res.render 'player', view: 'player'
+app.get '/controller', (req, res) -> res.render 'controller', view: 'controller'
 
 io.sockets.on 'connection', (socket) ->
-  socket.emit 'news', hello: 'world'
-  socket.on 'my other event', (data) ->
-    console.log(data);
-
+  socket.on 'connect-player', (data) ->
+    console.log "player connected to channel #{data.channel}"
+    socket.join(data.channel)
+  socket.on 'cntrl', (data) ->
+    io.sockets.in(data.channel).emit 'cntrl', data
 
 server.listen app.get('port')
