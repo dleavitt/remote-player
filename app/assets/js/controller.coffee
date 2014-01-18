@@ -1,5 +1,5 @@
 # Controller JS
-socket = io.connect 'http://localhost:3000'
+socket = io.connect location.protocol + '//' + location.host
 $ ->
   channel = Math.round(Math.random() * 10000)
   console.log channel

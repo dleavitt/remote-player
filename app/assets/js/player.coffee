@@ -1,5 +1,5 @@
 # Player JS
-socket = io.connect 'http://localhost:3000'
+socket = io.connect location.protocol + '//' + location.host
 $ ->
   video = $('#video')[0]
   $('#play').click   -> video.play()
