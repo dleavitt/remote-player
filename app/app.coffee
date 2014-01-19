@@ -29,7 +29,7 @@ app.get '/controller', (req, res) -> res.render 'controller', view: 'controller'
 io.sockets.on 'connection', (socket) ->
   socket.on 'connect-player', (data) ->
     for room, state of socket.manager.roomClients[socket.id]
-      if room[0] == '/' and state
+      if room[0] is '/' and state
         channel = room.substring(1)
         console.log "player disconnected from channel #{channel}"
         socket.leave(channel)
@@ -37,6 +37,7 @@ io.sockets.on 'connection', (socket) ->
     console.log "player connected to channel #{data.channel}"
     socket.join(data.channel)
   socket.on 'cntrl', (data) ->
+    console.log 'send cntrl', data
     io.sockets.in(data.channel).emit 'cntrl', data
 
 server.listen app.get('port')
