@@ -1,19 +1,19 @@
 {
-    "name": "remote-player"
-  , "version": "0.0.1"
-  , "dependencies": {
-        "express": "3.0.0beta4"
-      , "connect-assets": "2.1.x"
-      , "jade": "*"
-      , "stylus": "*"
-      , "coffee-script": "*"
-      , "socket.io": "*"
-    }
-  , "scripts": {
-      "start": "server.js"
-    }
-  , "engines": {
-        "node": "0.10.24"
-      , "npm": "1.1.x"
-    }
+  "name": "remote-player",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~3.4.8",
+    "connect-assets": "~2.5.3",
+    "jade": "~1.1.4",
+    "stylus": "~0.42.1",
+    "coffee-script": "~1.6.3",
+    "socket.io": "~0.9.16"
+  },
+  "scripts": {
+    "start": "server.js"
+  },
+  "engines": {
+    "node": "0.10.24",
+    "npm": "1.1.x"
+  }
 }

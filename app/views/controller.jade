@@ -1,18 +1,26 @@
 doctype html
 html(lang="en")
   head
-    meta(charset="utf-8")
-    title remote-player
-    //- != css('styles')
+  meta(charset="utf-8")
+  meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+  title remote-player
+  link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css")
+  != css('controller')
 
-  body(data-view="#{view}")
-    .channel
-        | Channel: &nbsp;
+  body
+  .main
+    .row.channel
+      .col-xs-8.chanel-detail
+        Strong Channel &nbsp;
         code.channel-id
-        button#reset-channel Reset Channel
-    .controls
-        button(id="play") Play
-        button(id="pause") Pause
+      .col-xs-4.channel-reset
+        button.btn.btn-default.btn-sm#reset-channel Reset Channel
+    .row.controls
+      .col-xs-8.col-xs-offset-2
+        button.btn.btn-primary.btn-lg.btn-block#play Play
+    .row.controls
+      .col-xs-8.col-xs-offset-2
+        button.btn.btn-primary.btn-lg.btn-block#pause Pause
 
     script(src="//code.jquery.com/jquery-1.10.2.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js")
