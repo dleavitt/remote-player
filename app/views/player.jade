@@ -9,12 +9,11 @@ html(lang="en")
     .chan
       input#channel(placeholder="Channel")
       button#connect Connect
+
     video#video(src="http://pygmael.s3.amazonaws.com/oceans.mp4" controls)
-    .controls
-        button(id="play") Play
-        button(id="pause") Pause
 
     script(src="//code.jquery.com/jquery-1.10.2.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js")
     script(src="/socket.io/socket.io.js")
+    != js('utils')
     != js('player')

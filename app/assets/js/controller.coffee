@@ -1,13 +1,13 @@
+#= require utils
+
 # Controller JS
 socket = io.connect location.protocol + '//' + location.host
 channel = $.cookie 'channel-id-controller'
 
-randString = (len=5) -> Math.random().toString(36).substring(5, 5 + len)
-
 displayChannel = -> $('.channel-id').text channel
 
 resetChannel = ->
-  channel = "#{randString(3)}-#{randString(3)}"
+  channel = randKey()
   $.cookie 'channel-id-controller', channel, expires: 7
   displayChannel()
 
